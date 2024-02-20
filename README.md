@@ -50,6 +50,7 @@ Another interesting fact is, that the top starting and ending station for member
 ## Key Recommendations 
 1. Create different forms of advertisement either using billboards or banners in areas where casual riders mostly book their rides and also in traffic-prone areas in the city. One might even add a special discount every now and then.
 2. Based on the analysis, it shows that casual riders use the bikes more at weekends. Due to that, it is recommended that the company offer a weekend-only subscription, and these users can upgrade to a member subscription when they want. Here, both the company and the casual users benefit from this plan.
-3. Nowadays, most people are on different social media platforms. Cyclistic Bike company can focus on social media marketing that will focus not only on advertising and attracting casual riders to get a subscription but even get new riders to join. this can be done using either skits, short videos or sponsored ads.
+3. In today's digital age, the majority of individuals are active on various social media platforms. Cyclistic Bike-Share company has the opportunity to leverage social media marketing to not only advertise and attract casual riders to subscribe but also to appeal to new riders. This can be achieved through creative content such as skits, short videos, or sponsored ads.
+   
 ## Tools
 Excel and R Studio for Data Cleaning, Data Transformation, Data Analysis, and Data Visualization.
