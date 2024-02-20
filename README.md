@@ -44,7 +44,9 @@ The datasets have rider information for two years (2019 and 2020), with each yea
 
 ## Conclusion
 Based on the analysis and graphical visualization, one can see at a glance that the member riders use their bikes way more than casual riders. On a closer look, one can see how the members use their bikes when compared to casual riders. First, members use the bikes more during weekdays  and less at weekends. While for casuals the reverse is the case, having more usage at weekends and less during the weekdays. Second, on average, casual riders have significantly longer periods than member riders, yet they ride more only at weekends.
-Another interesting fact is, that the top starting and ending station for members is at Canal & Adams St. which is a location that is known for businesses and 9-5 jobs. As for, casuals it is located at Streeter Dr & Grand Ave which is known to be a very walkable and less busy place in Chicago and most people are pedestrians or bikers. Hence, casuals mostly use bikes for leisure and other weekend extracurricular activities, while members use them mainly for transportation to and within places of work and other routine tasks.   
-## Key Recommendations 
 
+Another interesting fact is, that the top starting and ending station for members is at Canal & Adams St. which is a location that is known for businesses and 9-5 jobs. As for, casuals it is located at Streeter Dr & Grand Ave which is known to be a very walkable and less busy place in Chicago and most people are pedestrians or bikers. Hence, casuals mostly use bikes for leisure and other weekend extracurricular activities, while members use them mainly for transportation to and within places of work and to carry out other routine tasks.  
+
+## Key Recommendations 
+1. 
 ## Tools
