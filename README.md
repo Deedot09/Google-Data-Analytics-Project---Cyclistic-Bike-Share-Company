@@ -26,7 +26,11 @@ With this understanding, our team aims to develop a new marketing strategy focus
 ## Key Stakeholders
 The key stakeholders for this project are:
 
-1. Lily Moreno 
+1. **Cyclitic Executive team**: The notoriously detail-oriented executive team will decide whether to approve the recommended marketing program.
+2. **Lily Moreno**: The director of marketing and your manager. Moreno is responsible for the development of campaigns and initiatives to promote the bike-share program. These may include email, social media, and other channels.
+3. **Cyclistic Marketing Analytics Team**: A team of data analysts who are responsible for collecting, analyzing, and reporting data that helps guide Cyclistic marketing strategy. I joined this team six months ago and have been busy learning about Cyclistic’s
+mission and business goals, as well as how I as a junior data analyst, can help Cyclistic achieve them.
+
 ## Business Task
 
 ## Data Source
