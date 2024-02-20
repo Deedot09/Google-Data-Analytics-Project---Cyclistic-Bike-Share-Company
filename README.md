@@ -43,7 +43,7 @@ For this particular capstone project, the director of marketing has assigned me 
 The datasets have rider information for two years (2019 and 2020), with each year spanning three months from January to March. The data has been made available by Motivate International Inc. under this [license](https://divvybikes.com/data-license-agreement). This is the public data that I used to explore how different customer types are using Cyclistic bikes and it is originally stored in separate CSV files organized by the different months and/or different years here.
 
 ## Conclusion
-Based on the analysis and graphical visualization
-## Key Recommendations
+Based on the analysis and graphical visualization, one can see at a glance that the member riders use their bikes way more than casual riders. On a closer look, one can see how the members use their bikes when compared to casual riders. Firstly, members use the bikes 
+## Key Recommendations 
 
 ## Tools
