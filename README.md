@@ -50,3 +50,4 @@ Another interesting fact is, that the top starting and ending station for member
 ## Key Recommendations 
 1. 
 ## Tools
+Excel and R Studio for Data Cleaning, Data Transformation, Data Analysis and Data Visualization.
