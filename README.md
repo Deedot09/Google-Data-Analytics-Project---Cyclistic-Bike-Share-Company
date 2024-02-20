@@ -40,7 +40,7 @@ There are three tasks that will guide the future marketing program:
 For this particular capstone project, the director of marketing has assigned me to solve the _first_ business task. 
 
 ## Data Source
-
+The datasets have rider information for two years (2019 and 2020), with each year spanning three months from January to March. The data has been made available by Motivate International Inc. under this [license](https://divvybikes.com/data-license-agreement). This is public data that you can use to explore how different customer types are using Cyclistic bikes
 ## Conclusion
 
 ## Key Recommendations
