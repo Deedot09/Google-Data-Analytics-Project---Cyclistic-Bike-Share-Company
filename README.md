@@ -26,12 +26,18 @@ With this understanding, our team aims to develop a new marketing strategy focus
 ## Key Stakeholders
 The key stakeholders for this project are:
 
-1. **Cyclitic Executive team**: The notoriously detail-oriented executive team will decide whether to approve the recommended marketing program.
-2. **Lily Moreno**: The director of marketing and your manager. Moreno is responsible for the development of campaigns and initiatives to promote the bike-share program. These may include email, social media, and other channels.
-3. **Cyclistic Marketing Analytics Team**: A team of data analysts who are responsible for collecting, analyzing, and reporting data that helps guide Cyclistic marketing strategy. I joined this team six months ago and have been busy learning about Cyclistic’s
+1. _**Cyclitic Executive team**_: The notoriously detail-oriented executive team will decide whether to approve the recommended marketing program.
+2. _**Lily Moreno**_: The director of marketing and your manager. Moreno is responsible for the development of campaigns and initiatives to promote the bike-share program. These may include email, social media, and other channels.
+3. _**Cyclistic Marketing Analytics Team**_: A team of data analysts responsible for collecting, analyzing, and reporting data that helps guide Cyclistic marketing strategy. I joined this team six months ago and have been busy learning about Cyclistic’s
 mission and business goals, as well as how I as a junior data analyst, can help Cyclistic achieve them.
 
 ## Business Task
+There are three tasks that will guide the future marketing program:
+1. _**How do annual members and casual riders use Cyclistic bikes differently?**_
+2. Why would casual riders buy Cyclistic annual memberships?
+3. How can Cyclistic use digital media to influence casual riders to become members?
+
+For this particular capstone project, the director of marketing has assigned me to solve the _first_ business task. 
 
 ## Data Source
 
