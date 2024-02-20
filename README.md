@@ -48,6 +48,8 @@ Based on the analysis and graphical visualization, one can see at a glance that 
 Another interesting fact is, that the top starting and ending station for members is at Canal & Adams St. which is a location that is known for businesses and 9-5 jobs. As for, casuals it is located at Streeter Dr & Grand Ave which is known to be a very walkable and less busy place in Chicago and most people are pedestrians or bikers. Hence, casuals mostly use bikes for leisure and other weekend extracurricular activities, while members use them mainly for transportation to and within places of work and to carry out other routine tasks.  
 
 ## Key Recommendations 
-1. 
+1. Create different forms of advertisement either using billboards or banners in areas where casual riders mostly book their rides and also in traffic-prone areas in the city. One might even add a special discount every now and then.
+2. Based on the analysis, it shows that casual riders use the bikes more at weekends. Due to that, it is recommended that the company offer a weekend-only subscription, and these users can upgrade to a member subscription when they want. Here, both the company and the casual users benefit from this plan.
+3. Nowadays, most people are on different social media platforms. Cyclistic Bike company can focus on social media marketing that will focus not only on advertising and attracting casual riders to get a subscription but even get new riders to join. this can be done using either skits, short videos or sponsored ads.
 ## Tools
-Excel and R Studio for Data Cleaning, Data Transformation, Data Analysis and Data Visualization.
+Excel and R Studio for Data Cleaning, Data Transformation, Data Analysis, and Data Visualization.
