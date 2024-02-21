@@ -48,29 +48,22 @@ q1_2020 <- read.csv("Divvy_Trips_2020_Q1.csv")
 ```
 
 
+```
+# ===================================================
+# STEP 3: WRANGLE DATA AND COMBINE INTO A SINGLE FILE
+# ===================================================
 
-**# ===================================================**
-
-**# STEP 3: WRANGLE DATA AND COMBINE INTO A SINGLE FILE**
-
-**# ===================================================**
-
-
-
-#### Compare column names each of the files
-
+# Compare column names each of the files
 
 While the names don't have to be in the same order, they DO need to match perfectly before we can use a command to join them into one file
 
 ```{r}
 colnames(q1_2019)
-```
 
-```{r}
 colnames(q1_2020)
 ```
 
-
+```
 While cleaning the raw data in Excel, I noticed the column names were not consistent.
 Hence, to make them consistent I will use the rename function
 
@@ -86,8 +79,8 @@ q1_2019 <- rename(q1_2019,ride_id = trip_id
                   ,member_casual = usertype)
 ```
 
-
-#### Inspect the dataframes and look for incongruencies using the str() function
+```
+# Inspect the dataframes and look for incongruencies using the str() function
 
 ```{r}
 str(q1_2019)
@@ -95,8 +88,8 @@ str(q1_2020)
 
 ```
 
-
-#### Convert ride_id and rideable_type to character so that they can stack correctly
+```
+# Convert ride_id and rideable_type to character so that they can stack correctly
 
 ```{r}
 q1_2019 <- mutate(q1_2019, ride_id = as.character(ride_id)
@@ -104,14 +97,14 @@ q1_2019 <- mutate(q1_2019, ride_id = as.character(ride_id)
                   
 ```
 
-
-#### Combine both data frames by stacking individual quarter's data frames into one big data frame
+```
+# Combine both data frames by stacking individual quarter's data frames into one big data frame
 
 ```{r}
 all_trips <- bind_rows(q1_2019,q1_2020)
 ```
-
-#### Remove the lat, long, birthyear, and gender fields as these data were dropped in 2020
+```
+# Remove the lat, long, birthyear, and gender fields as these data were dropped in 2020
 
 
 ```{r}
