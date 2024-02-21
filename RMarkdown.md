@@ -11,7 +11,7 @@
 # ggplot2 -> visualization
 ```
 
-```
+```r
 install.packages("tidyverse")
 install.packages("lubridate")
 install.packages("skimr")
@@ -20,7 +20,7 @@ install.packages("ggplot2")
 install.packages("dplyr")
 ```
 
-```
+```r
 library(tidyverse)
 library(lubridate)
 library(skimr)
@@ -39,16 +39,16 @@ library(dplyr)
 # Variables will be assigned to the datasets for easy storage and presentation
 
 ```
-```
+```r
 q1_2019 <- read.csv("Divvy_Trips_2019_Q1.csv")
 ```
 
-```
+```r
 q1_2020 <- read.csv("Divvy_Trips_2020_Q1.csv") 
 ```
 
 
-```
+```r
 # ===================================================
 # STEP 3: WRANGLE DATA AND COMBINE INTO A SINGLE FILE
 # ===================================================
@@ -62,7 +62,7 @@ colnames(q1_2019)
 colnames(q1_2020)
 ```
 
-```
+```r
 # While cleaning the raw data in Excel, I noticed the column names were not consistent.
 # Hence, to make them consistent I will use the rename function
 
@@ -77,7 +77,7 @@ q1_2019 <- rename(q1_2019,ride_id = trip_id
                   ,member_casual = usertype)
 ```
 
-```
+```r
 # Inspect the dataframes and look for incongruencies using the str() function
 
 str(q1_2019)
@@ -85,7 +85,7 @@ str(q1_2020)
 
 ```
 
-```
+```r
 # Convert ride_id and rideable_type to character so that they can stack correctly
 
 q1_2019 <- mutate(q1_2019, ride_id = as.character(ride_id)
@@ -93,19 +93,19 @@ q1_2019 <- mutate(q1_2019, ride_id = as.character(ride_id)
                   
 ```
 
-```
+```r
 # Combine both data frames by stacking individual quarter's data frames into one big data frame
 
 all_trips <- bind_rows(q1_2019,q1_2020)
 ```
-```
+```r
 # Remove the lat, long, birthyear, and gender fields as these data were dropped in 2020
 
 all_trips <- all_trips %>% 
   select(-c(start_lat,start_lng,end_lat,end_lng,birthyear,gender,"tripduration"))
 ```
 
-```
+```r
 # =====================================================
 # STEP 4: CLEAN UP AND ADD DATA TO PREPARE FOR ANALYSIS
 # =====================================================
@@ -145,7 +145,7 @@ summary(all_trips)
 # Note: "Level" is a special property of a column that is retained even if a subset does not contain any values from a specific level.
 ```
 
-```
+```r
 # First, let's see how many observations fall under each usertype
 
 table(all_trips$member_casual)
@@ -162,7 +162,7 @@ all_trips <- all_trips %>%
 table(all_trips$member_casual)
 ```
 
-```
+```r
 # Secondly, add columns that list the date, month, day, and year of each ride
 
 # This will allow me to aggregate ride data for each month, day, or year ... before completing these operations I could only aggregate at the ride level
@@ -174,7 +174,7 @@ all_trips$year <- format(as.Date(all_trips$date),"%Y")
 all_trips$day_of_week <- format(as.Date(all_trips$date),"%A")
 ```
 
-```
+```r
 # Thirdly, add a "ride_length" calculation to all_trips (in seconds)
 all_trips$ride_length <- difftime(all_trips$ended_at,all_trips$started_at)
 
@@ -187,7 +187,7 @@ all_trips$ride_length <- as.numeric(as.character(all_trips$ride_length))
 is.numeric(all_trips$ride_length)
 ```
 
-```
+```r
 # Lastly, remove "bad" data
 
 # The dataframe includes a few hundred entries when bikes were taken out of docks and checked for quality by Divvy or ride_length was negative
@@ -196,7 +196,7 @@ is.numeric(all_trips$ride_length)
 all_trips_v2 <- all_trips[!(all_trips$start_station_name == "HQ QR" | all_trips$ride_length<0),]
 ```
 
-```
+```r
 # ====================================
 # STEP 5: CONDUCT DESCRIPTIVE ANALYSIS
 # ====================================
@@ -219,7 +219,7 @@ min(all_trips_v2$ride_length)
 summary(all_trips_v2$ride_length)
 ```
 
-```
+```r
 # Compare members and casual users
 
 aggregate(all_trips_v2$ride_length ~ all_trips_v2$member_casual, FUN = mean)
@@ -231,7 +231,7 @@ aggregate(all_trips_v2$ride_length ~ all_trips_v2$member_casual, FUN = max)
 aggregate(all_trips_v2$ride_length ~ all_trips_v2$member_casual, FUN = min)
 ```
 
-```
+```r
 # I will find the average ride time by each day for member vs casual users
 
 aggregate(all_trips_v2$ride_length ~ all_trips_v2$member_casual + all_trips_v2$day_of_week, FUN = mean)
@@ -253,7 +253,7 @@ all_trips_v2 %>%
   arrange(member_casual,weekday)
 ```
 
-```
+```r
 # ===========================
 # STEP 6: DATA VISUALIZATIONS
 # ===========================
@@ -265,12 +265,12 @@ ggplot(data = all_trips_v2,mapping = aes(x = member_casual, fill= member_casual)
   labs(title = "User Count: Member vs Casual")
 
 
-Observations:
+Observations
 
 (1) Member riders have more rides than casual riders.
 ```
 
-```
+```r
 # Secondly, I will visualize the number of rides of each rider type by day of the week
 
 all_trips_v2 %>% 
@@ -284,7 +284,7 @@ all_trips_v2 %>%
   labs(title = "Cyclistic -Total Rides: Jan - Mar 2019 & 2020", subtitle  = "By Weekday and Rider Type")
 
 
-Observations:
+Observations
 
 (1) Member riders have more rides than casual riders on both weekdays and weekends.
 
@@ -293,7 +293,7 @@ Observations:
 (3) Member riders have a significantly higher number of rides during the weekdays when compared to weekends.
 ```
 
-```
+```r
 # Thirdly, I will create a visualization for the average duration
 
 all_trips_v2 %>%
@@ -307,7 +307,7 @@ all_trips_v2 %>%
   labs(title = "Cyclistic -Total Rides: Jan - Mar 2019 & 2020", subtitle  = "Average Duration")
 
 
-Observations:
+Observations
 
 (1) The average duration during the week is higher for casual riders in comparison to member riders.
 
@@ -316,7 +316,7 @@ Observations:
 (3) The average duration for casual riders fluctuates through the day of the week with Thursday having the highest average duration for casual riders. 
 ```
 
-```
+```r
 # Fourthly, I will visualize the number of rides by month
 
 all_trips_v2 %>% 
@@ -330,16 +330,16 @@ all_trips_v2 %>%
   labs(title = "Cyclistic -Total Rides: Jan - Mar 2019 & 2020", subtitle  = "By month and Rider Type")
 
 
-Observations:
+Observations
 
-(1) Top month for casual riders:March
+(1) Top month for casual riders; March
 
-(2) Top month for member riders: March
+(2) Top month for member riders; March
 
 (3) For most months of the year, member riders have more total rides than casual riders
 ```
 
-```
+```r
 # I would also visualize the top starting station booked by cyclistic members
 
 all_trips_v2 %>% 
@@ -358,14 +358,14 @@ all_trips_v2 %>%
   theme_minimal()
 
 
-Observations:
+Observations
 
 (1) The top starting station for member riders is Canal & Adams St.
 
 (2) The least starting starting station for member riders is Clinton St. & Lake St.
 ```
 
-```
+```r
 # Next, visualize the top ending station booked by cyclistic members
 
 all_trips_v2 %>% 
@@ -384,14 +384,14 @@ all_trips_v2 %>%
   theme_minimal()
 
 
-Observations:
+Observations
 
 (1) Member riders mostly end their trips at Canal & Adams st.
 
 (2) Member riders seldom end their trips at LaSalle st &Jackson Blvd.
 ```
 
-```
+```r
 # I would also do the same for Cyclistic casuals
 
 all_trips_v2 %>% 
@@ -410,14 +410,14 @@ all_trips_v2 %>%
   theme_minimal()
 
 
-Observations:
+Observations
 
 (1) The top starting station for casual riders is Streeter Dr & Grand Ave.
 
 (2) The least starting station for member riders is Lake Shore Dr & North Blvd.
 ```
 
-```
+```r
 # Next, visualize the top ending station booked by cyclistic Casuals
 
 all_trips_v2 %>% 
@@ -436,15 +436,14 @@ all_trips_v2 %>%
   theme_minimal()
 
 
-Observations:
+Observations
 
 (1) Member riders mostly end their trips at Streeter Dr & Grand Ave.
 
 (2) Member riders seldom end their trips at Adler Planetarium.
 ```
 
-```
-
+```r
 # ================================================
 # STEP 7: EXPORT SUMMARY FILE FOR FURTHER ANALYSIS
 # ================================================
