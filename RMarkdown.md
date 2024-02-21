@@ -162,11 +162,11 @@ all_trips <- all_trips %>%
 table(all_trips$member_casual)
 ```
 
-##### Secondly, add columns that list the date, month, day, and year of each ride
+```
+# Secondly, add columns that list the date, month, day, and year of each ride
 
-This will allow me to aggregate ride data for each month, day, or year ... before completing these operations I could only aggregate at the ride level
+# This will allow me to aggregate ride data for each month, day, or year ... before completing these operations I could only aggregate at the ride level
 
-```{r}
 all_trips$date <- as.Date(all_trips$started_at)
 all_trips$month <- format(as.Date(all_trips$date),"%m")
 all_trips$day <- format(as.Date(all_trips$date),"%d")
@@ -174,69 +174,45 @@ all_trips$year <- format(as.Date(all_trips$date),"%Y")
 all_trips$day_of_week <- format(as.Date(all_trips$date),"%A")
 ```
 
-##### Thirdly, add a "ride_length" calculation to all_trips (in seconds)
-
-```{r}
+```
+# Thirdly, add a "ride_length" calculation to all_trips (in seconds)
 all_trips$ride_length <- difftime(all_trips$ended_at,all_trips$started_at)
-```
 
-Inspect the structure of the columns
-
-```{r}
+# Inspect the structure of the columns
 str(all_trips)
-```
 
-Convert "ride_length" calculation to all_trips (in seconds)
-
-```{r}
+# Convert "ride_length" calculation to all_trips (in seconds)
 is.factor(all_trips$ride_length)
 all_trips$ride_length <- as.numeric(as.character(all_trips$ride_length))
 is.numeric(all_trips$ride_length)
 ```
 
-##### Lastly, remove "bad" data
+```
+# Lastly, remove "bad" data
 
-##### The dataframe includes a few hundred entries when bikes were taken out of docks and checked for quality by Divvy or ride_length was negative
+# The dataframe includes a few hundred entries when bikes were taken out of docks and checked for quality by Divvy or ride_length was negative
+# I will create a new version of the dataframe (v2) since data is being removed
 
-I will create a new version of the dataframe (v2) since data is being removed
-
-```{r}
 all_trips_v2 <- all_trips[!(all_trips$start_station_name == "HQ QR" | all_trips$ride_length<0),]
 ```
 
+```
+# ====================================
+# STEP 5: CONDUCT DESCRIPTIVE ANALYSIS
+# ====================================
 
+# Descriptive analysis on ride_length (all figures in seconds)
 
-**# ====================================**
-
-**# STEP 5: CONDUCT DESCRIPTIVE ANALYSIS**
-
-**# ====================================**
-
-
-
-#### Descriptive analysis on ride_length (all figures in seconds)
-
-straight average (total ride / rides)
-
-```{r}
+# straight average (total ride / rides)
 mean(all_trips_v2$ride_length)
-```
 
-midpoint number in the ascending array of ride lengths
-
-```{r}
+# midpoint number in the ascending array of ride lengths
 median(all_trips_v2$ride_length)
-```
 
-longest ride
-
-```{r}
+# longest ride
 max(all_trips_v2$ride_length)
-```
 
-shortest ride
-
-```{r}
+# shortest ride
 min(all_trips_v2$ride_length)
 ```
 
