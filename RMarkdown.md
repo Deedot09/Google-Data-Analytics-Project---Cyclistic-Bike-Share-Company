@@ -240,12 +240,24 @@ summary(all_trips_v2$ride_length)
 # Compare members and casual users
 
 aggregate(all_trips_v2$ride_length ~ all_trips_v2$member_casual, FUN = mean)
+   all_trips_v2$member_casual all_trips_v2$ride_length
+ 1                     casual                5372.7839
+ 2                     member                 795.2523
 
 aggregate(all_trips_v2$ride_length ~ all_trips_v2$member_casual, FUN = median)
+   all_trips_v2$member_casual all_trips_v2$ride_length
+ 1                     casual                     1393
+ 2                     member                      508
 
 aggregate(all_trips_v2$ride_length ~ all_trips_v2$member_casual, FUN = max)
+   all_trips_v2$member_casual all_trips_v2$ride_length
+ 1                     casual                 10632022
+ 2                     member                  6096428
 
 aggregate(all_trips_v2$ride_length ~ all_trips_v2$member_casual, FUN = min)
+   all_trips_v2$member_casual all_trips_v2$ride_length
+ 1                     casual                        2
+ 2                     member                        1
 ```
 
 ```r
@@ -256,6 +268,21 @@ aggregate(all_trips_v2$ride_length ~ all_trips_v2$member_casual + all_trips_v2$d
 # I noticed the days of the week are out of order, so I will fix it.
 
 all_trips_v2$day_of_week <- ordered(all_trips_v2$day_of_week, levels=c("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"))
+    all_trips_v2$member_casual all_trips_v2$day_of_week all_trips_v2$ride_length
+ 1                      casual                   Sunday                5061.3044
+ 2                      member                   Sunday                 972.9383
+ 3                      casual                   Monday                4752.0504
+ 4                      member                   Monday                 822.3112
+ 5                      casual                  Tuesday                4561.8039
+ 6                      member                  Tuesday                 769.4416
+ 7                      casual                Wednesday                4480.3724
+ 8                      member                Wednesday                 711.9838
+ 9                      casual                 Thursday                8451.6669
+ 10                     member                 Thursday                 707.2093
+ 11                     casual                   Friday                6090.7373
+ 12                     member                   Friday                 796.7338
+ 13                     casual                 Saturday                4950.7708
+ 14                     member                 Saturday                 974.0730
 
 # Now, let's run the average ride time by eac day for members vs casual users
 
@@ -268,6 +295,25 @@ all_trips_v2 %>%
   group_by(member_casual,weekday) %>%
   summarise(number_of_rides = n(), average_duration = mean(ride_length)) %>% 
   arrange(member_casual,weekday)
+
+ # A tibble: 14 × 4
+ # Groups:   member_casual [2]
+    member_casual weekday number_of_rides average_duration
+    <chr>         <ord>             <int>            <dbl>
+  1 casual        Sun               18652            5061.
+  2 casual        Mon                5591            4752.
+  3 casual        Tue                7311            4562.
+  4 casual        Wed                7690            4480.
+  5 casual        Thu                7147            8452.
+  6 casual        Fri                8013            6091.
+  7 casual        Sat               13473            4951.
+  8 member        Sun               60197             973.
+  9 member        Mon              110430             822.
+ 10 member        Tue              127974             769.
+ 11 member        Wed              121902             712.
+ 12 member        Thu              125228             707.
+ 13 member        Fri              115168             797.
+ 14 member        Sat               59413             974.
 ```
 
 ```r
