@@ -391,9 +391,9 @@ Observations:
 (2) Member riders seldom end their trips at LaSalle st &Jackson Blvd.
 ```
 
-##### I would also do the same for Cyclistic casuals
+```
+# I would also do the same for Cyclistic casuals
 
-```{r}
 all_trips_v2 %>% 
   filter(!is.na(start_station_name)) %>% 
   filter(member_casual == "casual") %>% 
@@ -408,18 +408,18 @@ all_trips_v2 %>%
   labs(title = "Cyclistic -Total Rides: Jan - Mar 2019 & 2020", subtitle = "Top Station Booked by Cyclistic Members") +
   coord_flip()+
   theme_minimal()
-```
 
-**Observations:**
+
+Observations:
 
 (1) The top starting station for casual riders is Streeter Dr & Grand Ave.
 
-(2) The least starting starting station for member riders is Lake shore Dr & North Blvd.
+(2) The least starting station for member riders is Lake Shore Dr & North Blvd.
+```
 
+```
+# Next, visualize the top ending station booked by cyclistic Casuals
 
-##### Next, visualize the top ending station booked by cyclistic Casuals
-
-```{r}
 all_trips_v2 %>% 
   filter(!is.na(end_station_name)) %>% 
   filter(member_casual == "casual") %>% 
@@ -434,29 +434,25 @@ all_trips_v2 %>%
   labs(title = "Cyclistic -Total Rides: Jan - Mar 2019 & 2020", subtitle = "Top Station Booked by Cyclistic Members") +
   coord_flip()+
   theme_minimal()
-```
 
-**Observations:**
+
+Observations:
 
 (1) Member riders mostly end their trips at Streeter Dr & Grand Ave.
 
 (2) Member riders seldom end their trips at Adler Planetarium.
-
-
-
-**# ================================================**
-
-**# STEP 7: EXPORT SUMMARY FILE FOR FURTHER ANALYSIS**
-
-**# ================================================**
-
-
-### Create a csv file to use on other presentation software
-
-```{r}
-counts <- aggregate(all_trips_v2$ride_length ~ all_trips_v2$member_casual + all_trips_v2$day_of_week,FUN = mean)
 ```
 
-```{r}
+```
+
+# ================================================
+# STEP 7: EXPORT SUMMARY FILE FOR FURTHER ANALYSIS
+# ================================================
+
+# Create a CSV file to use on other presentation software
+
+
+counts <- aggregate(all_trips_v2$ride_length ~ all_trips_v2$member_casual + all_trips_v2$day_of_week,FUN = mean)
+
 write.csv(counts, file ='avg_ride_length.csv')
 ```
