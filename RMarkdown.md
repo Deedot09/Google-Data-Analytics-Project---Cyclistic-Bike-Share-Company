@@ -36,7 +36,7 @@ library(dplyr)
 
 # Next, the divvy tripdata datasets will be uploaded
 
-Variables will be assigned to the datasets for easy storage and presentation
+# Variables will be assigned to the datasets for easy storage and presentation
 
 ```
 ```
@@ -55,7 +55,7 @@ q1_2020 <- read.csv("Divvy_Trips_2020_Q1.csv")
 
 # Compare column names each of the files
 
-While the names don't have to be in the same order, they DO need to match perfectly before we can use a command to join them into one file
+# While the names don't have to be in the same order, they DO need to match perfectly before we can use a command to join them into one file
 
 colnames(q1_2019)
 
@@ -63,8 +63,8 @@ colnames(q1_2020)
 ```
 
 ```
-While cleaning the raw data in Excel, I noticed the column names were not consistent.
-Hence, to make them consistent I will use the rename function
+# While cleaning the raw data in Excel, I noticed the column names were not consistent.
+# Hence, to make them consistent I will use the rename function
 
 q1_2019 <- rename(q1_2019,ride_id = trip_id
                   ,rideable_type = bikeid
@@ -121,53 +121,44 @@ nrow(all_trips)
 # Dimensions of the data frames?
 dim(all_trips)
 
-See the first 6 rows of data frame. Also, tail(all_trips)
+# See the first 6 rows of data frame. Also, tail(all_trips)
 head(all_trips)
 
-See list of columns and data types (numeric, character, etc)
+# See list of columns and data types (numeric, character, etc)
 str(all_trips)
 
-Statistical summary of data. Mainly for numerics
+# Statistical summary of data. Mainly for numerics
 summary(all_trips)
 ```
 
+```
+# There are a few problems I need to fix:
 
+# (1) In the "member_casual" column, there are two names for members ("member" and "Subscriber") and two names for casual riders ("Customer" and "casual"). I will need to consolidate that from four to two labels.
+# (2) The data can only be aggregated at the ride-level, which is too granular. I will add some additional columns of data -- such as day, month, year -- that provide additional opportunities to aggregate the data.
+# (3) I will add a calculated field for the length of ride since the 2020Q1 data did not have the "tripduration" column. I will add "ride_length" to the entire dataframe for consistency.
+# (4) There are some rides where tripduration shows up as negative, including several hundred rides where Divvy took bikes out of circulation for Quality Control reasons. I will delete these rides.
 
-
-
-#### There are few problems I need to fix:
-
-(1) In the "member_casual" column, there are two names for members ("member" and "Subscriber") and two names for casual rider ("Customer" and "casual"). I will need to consolidate that from four to two labels.
-(2) The data can only be aggregated at the ride-level, which is too granular. I will add some additional columns of data -- such as day, month, year -- that provide additional opportunities to aggregate the data.
-(3) I will add a calculated field for length of ride since the 2020Q1 data did not have the "tripduration" column.I will add "ride_length" to the entire dataframe for consistency.
-(4) There are some rides where tripduration shows up as negative, including several hundred rides where Divvy took bikes out of circulation for Quality Control reasons. I will delete these rides.
-
-#### Let's Begin
-
-In the "member_casual" column, replace "Subscriber" with "member" and "Customer" with "casual"
-
-Before 2020, Divvy used different labels for these two types of riders ... I will make the dataframe consistent with their current nomenclature.
-
-*Note: "Level" is a special property of a column that is retained even if a subset does not contain any values from a specific level.*
-
-##### First, let's see how many observations fall under each usertype
-
-```{r}
-table(all_trips$member_casual)
+# Let's Begin
+# In the "member_casual" column, replace "Subscriber" with "member" and "Customer" with "casual"
+# Before 2020, Divvy used different labels for these two types of riders ... I will make the dataframe consistent with their current terminology.
+# Note: "Level" is a special property of a column that is retained even if a subset does not contain any values from a specific level.
 ```
 
-Reassign to the desired values (let's go with the the current 2020 labels)
+```
+# First, let's see how many observations fall under each usertype
 
-```{r}
+table(all_trips$member_casual)
+
+# Reassign to the desired values (let's go with the current 2020 labels)
+
 all_trips <- all_trips %>% 
   mutate(member_casual = recode(member_casual
                                 ,"Subscriber" = "member"
                                 ,"Customer" = "casual"))
-```
 
-Check to make sure the proper number of observations were assigned 
+# Check to make sure the proper number of observations were assigned 
 
-```{r}
 table(all_trips$member_casual)
 ```
 
