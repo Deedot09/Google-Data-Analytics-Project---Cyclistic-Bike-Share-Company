@@ -11,7 +11,7 @@
 # ggplot2 -> visualization
 ```
 
-```{r}
+```
 install.packages("tidyverse")
 install.packages("lubridate")
 install.packages("skimr")
@@ -20,7 +20,7 @@ install.packages("ggplot2")
 install.packages("dplyr")
 ```
 
-```{r}
+```
 library(tidyverse)
 library(lubridate)
 library(skimr)
@@ -39,11 +39,11 @@ library(dplyr)
 Variables will be assigned to the datasets for easy storage and presentation
 
 ```
-```{r}
+```
 q1_2019 <- read.csv("Divvy_Trips_2019_Q1.csv")
 ```
 
-```{r}
+```
 q1_2020 <- read.csv("Divvy_Trips_2020_Q1.csv") 
 ```
 
@@ -57,7 +57,6 @@ q1_2020 <- read.csv("Divvy_Trips_2020_Q1.csv")
 
 While the names don't have to be in the same order, they DO need to match perfectly before we can use a command to join them into one file
 
-```{r}
 colnames(q1_2019)
 
 colnames(q1_2020)
@@ -67,7 +66,6 @@ colnames(q1_2020)
 While cleaning the raw data in Excel, I noticed the column names were not consistent.
 Hence, to make them consistent I will use the rename function
 
-```{r}
 q1_2019 <- rename(q1_2019,ride_id = trip_id
                   ,rideable_type = bikeid
                   ,started_at = start_time
@@ -82,7 +80,6 @@ q1_2019 <- rename(q1_2019,ride_id = trip_id
 ```
 # Inspect the dataframes and look for incongruencies using the str() function
 
-```{r}
 str(q1_2019)
 str(q1_2020)
 
@@ -91,7 +88,6 @@ str(q1_2020)
 ```
 # Convert ride_id and rideable_type to character so that they can stack correctly
 
-```{r}
 q1_2019 <- mutate(q1_2019, ride_id = as.character(ride_id)
                   ,rideable_type = as.character(rideable_type))
                   
@@ -100,64 +96,38 @@ q1_2019 <- mutate(q1_2019, ride_id = as.character(ride_id)
 ```
 # Combine both data frames by stacking individual quarter's data frames into one big data frame
 
-```{r}
 all_trips <- bind_rows(q1_2019,q1_2020)
 ```
 ```
 # Remove the lat, long, birthyear, and gender fields as these data were dropped in 2020
 
-
-```{r}
 all_trips <- all_trips %>% 
   select(-c(start_lat,start_lng,end_lat,end_lng,birthyear,gender,"tripduration"))
 ```
 
+```
+# =====================================================
+# STEP 4: CLEAN UP AND ADD DATA TO PREPARE FOR ANALYSIS
+# =====================================================
 
+# Before analysis, I need to inspect the new table that has been created
 
-**# =====================================================**
-
-**# STEP 4: CLEAN UP AND ADD DATA TO PREPARE FOR ANALYSIS**
-
-**# =====================================================**
-
-
-
-### Before analysis, I need to inspect the new table that has been created
-
-
-List of column names
-
-```{r}
+# List of column names
 colnames(all_trips)
-```
 
-How many rows are in the data frame?
-
-```{r}
+# How many rows are in the data frame?
 nrow(all_trips)
-```
 
-Dimensions of the data frames?
-
-```{r}
+# Dimensions of the data frames?
 dim(all_trips)
-```
 
 See the first 6 rows of data frame. Also, tail(all_trips)
-
-```{r}
 head(all_trips)
-```
 
 See list of columns and data types (numeric, character, etc)
-
-```{r}
 str(all_trips)
-```
 
 Statistical summary of data. Mainly for numerics
-
-```{r}
 summary(all_trips)
 ```
 
