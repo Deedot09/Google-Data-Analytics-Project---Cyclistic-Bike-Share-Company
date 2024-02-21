@@ -331,9 +331,9 @@ ggplot(data = all_trips_v2,mapping = aes(x = member_casual, fill= member_casual)
 ![image](https://github.com/Deedot09/Google-Data-Analytics-Project---Cyclistic-Bike-Share-Company/assets/152880749/f11f4c3a-2e27-4989-bd27-a34df4b9a490)
 
 
-Observations
+_**Observations**_
 
-(1) Member riders have more rides than casual riders.
+_(1) Member riders have more rides than casual riders._
 
 
 ```r
@@ -353,13 +353,13 @@ all_trips_v2 %>%
 ![image](https://github.com/Deedot09/Google-Data-Analytics-Project---Cyclistic-Bike-Share-Company/assets/152880749/1ecae089-920e-4e3a-a8ff-3d8d2c1c445f)
 
 
-Observations
+_**Observations**_
 
-(1) Member riders have more rides than casual riders on both weekdays and weekends.
+_(1) Member riders have more rides than casual riders on both weekdays and weekends._
 
-(2) Casual riders have a slightly higher number of rides during the weekends when compared to weekdays.
+_(2) Casual riders have a slightly higher number of rides during the weekends when compared to weekdays._
 
-(3) Member riders have a significantly higher number of rides during the weekdays when compared to weekends.
+_(3) Member riders have a significantly higher number of rides during the weekdays when compared to weekends._
 
 
 ```r
@@ -379,13 +379,13 @@ all_trips_v2 %>%
 ![image](https://github.com/Deedot09/Google-Data-Analytics-Project---Cyclistic-Bike-Share-Company/assets/152880749/68d52502-4bb2-455e-9cad-6e26504a12b6)
 
 
-Observations
+_**Observations**_
 
-(1) The average duration during the week is higher for casual riders in comparison to member riders.
+_(1) The average duration during the week is higher for casual riders in comparison to member riders._
 
-(2) The average duration for member riders is slightly higher at weekends when compared to weekdays.
+_(2) The average duration for member riders is slightly higher at weekends when compared to weekdays._
 
-(3) The average duration for casual riders fluctuates through the day of the week with Thursday having the highest average duration for casual riders. 
+_(3) The average duration for casual riders fluctuates through the day of the week with Thursday having the highest average duration for casual riders._
 
 
 ```r
@@ -405,13 +405,13 @@ all_trips_v2 %>%
 ![image](https://github.com/Deedot09/Google-Data-Analytics-Project---Cyclistic-Bike-Share-Company/assets/152880749/9c59b0b0-c7f8-4f73-b52d-535e6443fb6a)
 
 
-Observations
+_**Observations**_
 
-(1) Top month for casual riders; March
+_(1) Top month for casual riders; March_
 
-(2) Top month for member riders; March
+_(2) Top month for member riders; March_
 
-(3) For most months of the year, member riders have more total rides than casual riders
+_(3) For most months of the year, member riders have more total rides than casual riders_
 
 
 ```r
@@ -436,11 +436,11 @@ all_trips_v2 %>%
 ![image](https://github.com/Deedot09/Google-Data-Analytics-Project---Cyclistic-Bike-Share-Company/assets/152880749/86f9f062-6f60-43d0-be0d-7c54ecd820fd)
 
 
-Observations
+_**Observations**_
 
-(1) The top starting station for member riders is Canal & Adams St.
+_(1) The top starting station for member riders is Canal & Adams St._
 
-(2) The least starting starting station for member riders is Clinton St. & Lake St.
+_(2) The least starting starting station for member riders is Clinton St. & Lake St._
 
 
 ```r
@@ -465,11 +465,11 @@ all_trips_v2 %>%
 ![image](https://github.com/Deedot09/Google-Data-Analytics-Project---Cyclistic-Bike-Share-Company/assets/152880749/82619b4d-28a4-4609-88a7-e5fb1dd10576)
 
 
-Observations
+_**Observations**_
 
-(1) Member riders mostly end their trips at Canal & Adams st.
+_(1) Member riders mostly end their trips at Canal & Adams st._
 
-(2) Member riders seldom end their trips at LaSalle st &Jackson Blvd.
+_(2) Member riders seldom end their trips at LaSalle st &Jackson Blvd._
 
 
 ```r
@@ -494,11 +494,11 @@ all_trips_v2 %>%
 ![image](https://github.com/Deedot09/Google-Data-Analytics-Project---Cyclistic-Bike-Share-Company/assets/152880749/2e01615d-1c3c-48cb-8e40-68a8ed4be52b)
 
 
-Observations
+_**Observations**_
 
-(1) The top starting station for casual riders is Streeter Dr & Grand Ave.
+_(1) The top starting station for casual riders is Streeter Dr & Grand Ave._
 
-(2) The least starting station for member riders is Lake Shore Dr & North Blvd.
+_(2) The least starting station for member riders is Lake Shore Dr & North Blvd._
 
 
 ```r
@@ -523,11 +523,11 @@ all_trips_v2 %>%
 ![image](https://github.com/Deedot09/Google-Data-Analytics-Project---Cyclistic-Bike-Share-Company/assets/152880749/d8dfb05e-8e81-4dbe-9cf7-793c4e4288a7)
 
 
-Observations
+_**Observations**_
 
-(1) Member riders mostly end their trips at Streeter Dr & Grand Ave.
+_(1) Member riders mostly end their trips at Streeter Dr & Grand Ave._
 
-(2) Member riders seldom end their trips at Adler Planetarium.
+_(2) Member riders seldom end their trips at Adler Planetarium._
 
 
 ```r
