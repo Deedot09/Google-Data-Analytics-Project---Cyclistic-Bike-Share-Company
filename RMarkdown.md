@@ -326,12 +326,15 @@ all_trips_v2 %>%
 ggplot(data = all_trips_v2,mapping = aes(x = member_casual, fill= member_casual))+
   geom_bar() +
   labs(title = "User Count: Member vs Casual")
+```
+
+![image](https://github.com/Deedot09/Google-Data-Analytics-Project---Cyclistic-Bike-Share-Company/assets/152880749/f11f4c3a-2e27-4989-bd27-a34df4b9a490)
 
 
 Observations
 
 (1) Member riders have more rides than casual riders.
-```
+
 
 ```r
 # Secondly, I will visualize the number of rides of each rider type by day of the week
@@ -345,6 +348,9 @@ all_trips_v2 %>%
   ggplot(aes(x = weekday,y = number_of_rides, fill = member_casual))+
   geom_col(position = "dodge") +
   labs(title = "Cyclistic -Total Rides: Jan - Mar 2019 & 2020", subtitle  = "By Weekday and Rider Type")
+```
+
+![image](https://github.com/Deedot09/Google-Data-Analytics-Project---Cyclistic-Bike-Share-Company/assets/152880749/1ecae089-920e-4e3a-a8ff-3d8d2c1c445f)
 
 
 Observations
@@ -354,7 +360,7 @@ Observations
 (2) Casual riders have a slightly higher number of rides during the weekends when compared to weekdays.
 
 (3) Member riders have a significantly higher number of rides during the weekdays when compared to weekends.
-```
+
 
 ```r
 # Thirdly, I will create a visualization for the average duration
@@ -368,6 +374,9 @@ all_trips_v2 %>%
   ggplot(aes(x = weekday, y = average_duration, fill = member_casual)) +
   geom_col(position = "dodge")+
   labs(title = "Cyclistic -Total Rides: Jan - Mar 2019 & 2020", subtitle  = "Average Duration")
+```
+
+![image](https://github.com/Deedot09/Google-Data-Analytics-Project---Cyclistic-Bike-Share-Company/assets/152880749/68d52502-4bb2-455e-9cad-6e26504a12b6)
 
 
 Observations
@@ -377,7 +386,7 @@ Observations
 (2) The average duration for member riders is slightly higher at weekends when compared to weekdays.
 
 (3) The average duration for casual riders fluctuates through the day of the week with Thursday having the highest average duration for casual riders. 
-```
+
 
 ```r
 # Fourthly, I will visualize the number of rides by month
@@ -391,6 +400,9 @@ all_trips_v2 %>%
   ggplot(aes(x = month,y = number_of_rides, fill = member_casual))+
   geom_col(position = "dodge")+
   labs(title = "Cyclistic -Total Rides: Jan - Mar 2019 & 2020", subtitle  = "By month and Rider Type")
+```
+
+![image](https://github.com/Deedot09/Google-Data-Analytics-Project---Cyclistic-Bike-Share-Company/assets/152880749/9c59b0b0-c7f8-4f73-b52d-535e6443fb6a)
 
 
 Observations
@@ -400,7 +412,7 @@ Observations
 (2) Top month for member riders; March
 
 (3) For most months of the year, member riders have more total rides than casual riders
-```
+
 
 ```r
 # I would also visualize the top starting station booked by cyclistic members
@@ -419,6 +431,9 @@ all_trips_v2 %>%
   labs(title = "Cyclistic -Total Rides: Jan - Mar 2019 & 2020", subtitle = "Top Station Booked by Cyclistic Members") +
   coord_flip()+
   theme_minimal()
+```
+
+![image](https://github.com/Deedot09/Google-Data-Analytics-Project---Cyclistic-Bike-Share-Company/assets/152880749/86f9f062-6f60-43d0-be0d-7c54ecd820fd)
 
 
 Observations
@@ -426,7 +441,7 @@ Observations
 (1) The top starting station for member riders is Canal & Adams St.
 
 (2) The least starting starting station for member riders is Clinton St. & Lake St.
-```
+
 
 ```r
 # Next, visualize the top ending station booked by cyclistic members
@@ -445,6 +460,9 @@ all_trips_v2 %>%
   labs(title = "Cyclistic -Total Rides: Jan - Mar 2019 & 2020", subtitle = "Top Station Booked by Cyclistic Members") +
   coord_flip()+
   theme_minimal()
+```
+
+![image](https://github.com/Deedot09/Google-Data-Analytics-Project---Cyclistic-Bike-Share-Company/assets/152880749/82619b4d-28a4-4609-88a7-e5fb1dd10576)
 
 
 Observations
@@ -452,7 +470,7 @@ Observations
 (1) Member riders mostly end their trips at Canal & Adams st.
 
 (2) Member riders seldom end their trips at LaSalle st &Jackson Blvd.
-```
+
 
 ```r
 # I would also do the same for Cyclistic casuals
@@ -471,6 +489,9 @@ all_trips_v2 %>%
   labs(title = "Cyclistic -Total Rides: Jan - Mar 2019 & 2020", subtitle = "Top Station Booked by Cyclistic Members") +
   coord_flip()+
   theme_minimal()
+```
+
+![image](https://github.com/Deedot09/Google-Data-Analytics-Project---Cyclistic-Bike-Share-Company/assets/152880749/2e01615d-1c3c-48cb-8e40-68a8ed4be52b)
 
 
 Observations
@@ -478,7 +499,7 @@ Observations
 (1) The top starting station for casual riders is Streeter Dr & Grand Ave.
 
 (2) The least starting station for member riders is Lake Shore Dr & North Blvd.
-```
+
 
 ```r
 # Next, visualize the top ending station booked by cyclistic Casuals
@@ -497,6 +518,9 @@ all_trips_v2 %>%
   labs(title = "Cyclistic -Total Rides: Jan - Mar 2019 & 2020", subtitle = "Top Station Booked by Cyclistic Members") +
   coord_flip()+
   theme_minimal()
+```
+
+![image](https://github.com/Deedot09/Google-Data-Analytics-Project---Cyclistic-Bike-Share-Company/assets/152880749/d8dfb05e-8e81-4dbe-9cf7-793c4e4288a7)
 
 
 Observations
@@ -504,7 +528,7 @@ Observations
 (1) Member riders mostly end their trips at Streeter Dr & Grand Ave.
 
 (2) Member riders seldom end their trips at Adler Planetarium.
-```
+
 
 ```r
 # ================================================
