@@ -214,55 +214,38 @@ max(all_trips_v2$ride_length)
 
 # shortest ride
 min(all_trips_v2$ride_length)
-```
 
-
-
-##### I will condense the four lines above to one line using summary() on the specific attribute 
-
-```{r}
+# I will condense the four lines above to one line using summary() on the specific attribute 
 summary(all_trips_v2$ride_length)
 ```
 
-#### Compare members and casual users
+```
+# Compare members and casual users
 
-```{r}
 aggregate(all_trips_v2$ride_length ~ all_trips_v2$member_casual, FUN = mean)
-```
 
-```{r}
 aggregate(all_trips_v2$ride_length ~ all_trips_v2$member_casual, FUN = median)
-```
 
-```{r}
 aggregate(all_trips_v2$ride_length ~ all_trips_v2$member_casual, FUN = max)
-```
 
-```{r}
 aggregate(all_trips_v2$ride_length ~ all_trips_v2$member_casual, FUN = min)
 ```
 
-I will find the average ride time by each day for member vs casual users
-
-```{r}
-aggregate(all_trips_v2$ride_length ~ all_trips_v2$member_casual + all_trips_v2$day_of_week, FUN = mean)
 ```
+# I will find the average ride time by each day for member vs casual users
 
-I noticed the days of the week are out of order, so I will fix it.
+aggregate(all_trips_v2$ride_length ~ all_trips_v2$member_casual + all_trips_v2$day_of_week, FUN = mean)
 
-```{r}
+# I noticed the days of the week are out of order, so I will fix it.
+
 all_trips_v2$day_of_week <- ordered(all_trips_v2$day_of_week, levels=c("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"))
-```
 
-Now, let's run the average ride time by eac day for members vs casual users
+# Now, let's run the average ride time by eac day for members vs casual users
 
-```{r}
 aggregate(all_trips_v2$ride_length ~ all_trips_v2$member_casual + all_trips_v2$day_of_week, FUN = mean)
-```
 
-Analyse ridership data by type and weekday
+# Analyse ridership data by type and weekday
 
-```{r}
 all_trips_v2 %>% 
   mutate(weekday =wday(started_at,label = TRUE)) %>%  
   group_by(member_casual,weekday) %>%
@@ -270,31 +253,26 @@ all_trips_v2 %>%
   arrange(member_casual,weekday)
 ```
 
+```
+# ===========================
+# STEP 6: DATA VISUALIZATIONS
+# ===========================
 
+# First, I will visualize the number of rides by rider type
 
-**# ===========================**
-
-**# STEP 6: DATA VISUALIZATIONS**
-
-**# ===========================**
-
-
-##### First, I will visualize the number of rides by rider type
-
-```{r}
 ggplot(data = all_trips_v2,mapping = aes(x = member_casual, fill= member_casual))+
   geom_bar() +
   labs(title = "User Count: Member vs Casual")
-```
 
-**Observations:**
+
+Observations:
 
 (1) Member riders have more rides than casual riders.
+```
 
+```
+# Secondly, I will visualize the number of rides of each rider type by day of the week
 
-##### Secondly, I will visualize the number of rides of each rider type by day of the week
-
-```{r}
 all_trips_v2 %>% 
   mutate(weekday = wday(started_at, label = TRUE)) %>% 
   group_by(member_casual,weekday) %>% 
@@ -304,20 +282,20 @@ all_trips_v2 %>%
   ggplot(aes(x = weekday,y = number_of_rides, fill = member_casual))+
   geom_col(position = "dodge") +
   labs(title = "Cyclistic -Total Rides: Jan - Mar 2019 & 2020", subtitle  = "By Weekday and Rider Type")
+
+
+Observations:
+
+(1) Member riders have more rides than casual riders on both weekdays and weekends.
+
+(2) Casual riders have a slightly higher number of rides during the weekends when compared to weekdays.
+
+(3) Member riders have a significantly higher number of rides during the weekdays when compared to weekends.
 ```
 
-**Observations:**
+```
+# Thirdly, I will create a visualization for the average duration
 
-(1) Member riders have more rides than casual riders both weekdays and weekends.
-
-(2) Casual riders have slightly higher number of rides during the weekends when compared to weekdays.
-
-(3) Member riders have significantly higher number of rides during the weekdays when compared to weekends.
-
-
-##### Thirdly, I will create a visualization for average duration
-
-```{r}
 all_trips_v2 %>%
   mutate(weekday = wday(started_at, label = TRUE)) %>%
   group_by(member_casual, weekday) %>%
@@ -327,20 +305,20 @@ all_trips_v2 %>%
   ggplot(aes(x = weekday, y = average_duration, fill = member_casual)) +
   geom_col(position = "dodge")+
   labs(title = "Cyclistic -Total Rides: Jan - Mar 2019 & 2020", subtitle  = "Average Duration")
-```
 
-**Observations:**
+
+Observations:
 
 (1) The average duration during the week is higher for casual riders in comparison to member riders.
 
 (2) The average duration for member riders is slightly higher at weekends when compared to weekdays.
 
 (3) The average duration for casual riders fluctuates through the day of the week with Thursday having the highest average duration for casual riders. 
+```
 
+```
+# Fourthly, I will visualize the number of rides by month
 
-##### Fourthly, I will visualize the number of rides by month
-
-```{r}
 all_trips_v2 %>% 
   mutate(month = month(started_at, label = TRUE)) %>% 
   group_by(member_casual,month) %>% 
@@ -350,19 +328,20 @@ all_trips_v2 %>%
   ggplot(aes(x = month,y = number_of_rides, fill = member_casual))+
   geom_col(position = "dodge")+
   labs(title = "Cyclistic -Total Rides: Jan - Mar 2019 & 2020", subtitle  = "By month and Rider Type")
-```
 
-**Observations:**
+
+Observations:
 
 (1) Top month for casual riders:March
 
 (2) Top month for member riders: March
 
 (3) For most months of the year, member riders have more total rides than casual riders
+```
 
-##### I would also visualize the top starting station booked by cyclistic members
+```
+# I would also visualize the top starting station booked by cyclistic members
 
-```{r}
 all_trips_v2 %>% 
   filter(!is.na(start_station_name)) %>% 
   filter(member_casual == "member") %>% 
@@ -377,19 +356,18 @@ all_trips_v2 %>%
   labs(title = "Cyclistic -Total Rides: Jan - Mar 2019 & 2020", subtitle = "Top Station Booked by Cyclistic Members") +
   coord_flip()+
   theme_minimal()
+
+
+Observations:
+
+(1) The top starting station for member riders is Canal & Adams St.
+
+(2) The least starting starting station for member riders is Clinton St. & Lake St.
 ```
 
+```
+# Next, visualize the top ending station booked by cyclistic members
 
-**Observations:**
-
-(1) The top starting station for member riders is Canal & Adams st.
-
-(2) The least starting starting station for member riders is Clinton st. & Lake st.
-
-
-##### Next, visualize the top ending station booked by cyclistic members
-
-```{r}
 all_trips_v2 %>% 
   filter(!is.na(end_station_name)) %>% 
   filter(member_casual == "member") %>% 
@@ -404,14 +382,14 @@ all_trips_v2 %>%
   labs(title = "Cyclistic -Total Rides: Jan - Mar 2019 & 2020", subtitle = "Top Station Booked by Cyclistic Members") +
   coord_flip()+
   theme_minimal()
-```
 
-**Observations:**
+
+Observations:
 
 (1) Member riders mostly end their trips at Canal & Adams st.
 
 (2) Member riders seldom end their trips at LaSalle st &Jackson Blvd.
-
+```
 
 ##### I would also do the same for Cyclistic casuals
 
